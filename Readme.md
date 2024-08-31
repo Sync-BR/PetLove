@@ -5,7 +5,7 @@ Link para Cadastro:
 
 ## Exemplo de JSON para Cadastro:
 
-    [
+    
 
         {
             "username": "Nome",
@@ -14,7 +14,7 @@ Link para Cadastro:
             "pets": []
         }
             
-    ]
+    
 ## Retorno Após Adicionar um Novo Usuário
 Após adicionar um novo usuário, os dados retornados incluirão informações sobre o usuário e seus pets, caso existam. Se o usuário tiver um pet, as informações detalhadas desse pet serão incluídas na resposta.
 
