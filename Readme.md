@@ -20,7 +20,6 @@ Após adicionar um novo usuário, os dados retornados incluirão informações s
 
 Link para Retorno:
 <a href="http://localhost:8080/api/user/users">http://localhost:8080/api/user/users</a>
-http://localhost:8080/api/user/users
 
 ### Exemplo de Retorno de um Usuário Sem Pet:
     [
