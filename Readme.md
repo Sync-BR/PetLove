@@ -1,6 +1,5 @@
 
 # PetLove Spring Boot
-Instalação do projeto
 
 ## Requisitos
 [Mavem](https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip)
