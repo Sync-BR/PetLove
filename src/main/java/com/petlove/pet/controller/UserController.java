@@ -24,7 +24,6 @@ public class UserController {
             sizeList++;
             if(usuarios.getUsername().equals(username) && usuarios.getPassword().equals(password)){
                 sizeList--;
-                System.out.println("Posição do usuario: " +sizeList);
                 return new ResponseEntity<>(HttpStatus.OK);
 
             } else {

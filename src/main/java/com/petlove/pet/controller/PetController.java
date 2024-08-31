@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestMapping("/api")
+@RequestMapping("/api/pets")
 @RestController
 public class PetController {
     private static UserModel userModel = new UserModel();
