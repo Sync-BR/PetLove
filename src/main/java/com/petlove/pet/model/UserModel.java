@@ -18,6 +18,11 @@ public class UserModel {
     public UserModel(UserModel user) {
     }
 
+    public UserModel(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "UserModel{" +
