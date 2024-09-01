@@ -2,11 +2,11 @@ package com.petlove.pet.controller;
 
 import com.petlove.pet.model.UserList;
 import com.petlove.pet.model.UserModel;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -14,24 +14,20 @@ import java.util.List;
 public class UserController {
     private static UserList userList = new UserList();
 
+
     public boolean verifyUser(UserModel user) {
         return false;
     }
-    @PostMapping("/loginUser{username}Pass{password}")
-    public ResponseEntity<HttpStatus> login(@PathVariable String username, String password) {
-        int sizeList = 0;
-        for(UserModel usuarios: userList.usuarios){
-            sizeList++;
-            if(usuarios.getUsername().equals(username) && usuarios.getPassword().equals(password)){
-                sizeList--;
-                return new ResponseEntity<>(HttpStatus.OK);
-
-            } else {
-                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    @PostMapping("/loginUser{Username}Pass{Password}")
+    public ResponseEntity<UserModel> login(@PathVariable String Username, @PathVariable String Password) {
+        UserModel currentUser = new UserModel();
+        for(UserModel user : userList.usuarios){
+            if(user.getUsername().equals(Username) && user.getPassword().equals(Password)) {
+                currentUser = user;
+                return new ResponseEntity<>(currentUser, HttpStatus.OK);
             }
-
         }
-        return null;
+        return new ResponseEntity<>(currentUser, HttpStatus.UNAUTHORIZED);
     }
     @PostMapping("/adduser")
     public ResponseEntity<HttpStatus> addUser(@RequestBody UserModel user) {
