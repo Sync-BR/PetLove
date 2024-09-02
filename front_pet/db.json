@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "509f",
+      "username": "ian'",
+      "age": 23,
+      "password": "12",
+      "pets": [
+        {
+          "animal": "gato",
+          "name": "cat",
+          "gender": "femea"
+        }
+      ]
+    }
+  ]
+}
+
