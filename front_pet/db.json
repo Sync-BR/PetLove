@@ -12,7 +12,19 @@
           "gender": "femea"
         }
       ]
+    },
+    {
+      "id": "7cd1",
+      "username": "ian",
+      "age": 23,
+      "password": "123",
+      "pets": [
+        {
+          "animal": "cachorro",
+          "name": "darkzinn",
+          "gender": "male"
+        }
+      ]
     }
   ]
 }
-
