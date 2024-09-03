@@ -15,6 +15,8 @@ const Cadastro: React.FC = () => {
 
     const handleSubmit = (data: { animal: string; name: string; gender: string }) => {
         setPetData(data);
+        console.log("Pet Dados", petData);
+        
         const allData = {
             username: userData.username,
             age: userData.age,
