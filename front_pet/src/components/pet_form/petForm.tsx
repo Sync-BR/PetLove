@@ -35,13 +35,6 @@ const PetForm: React.FC<PetFormProps> = ({ onSubmit }) => {
                 onChange={(e) => setName(e.target.value)}
                 required
             />
-            <input
-                type="text"
-                placeholder="Gênero"
-
-
-
-            />
             <select value={gender} onChange={(e) => setGender(e.target.value)} required>
                 <option value="">Selecione o tipo</option>
                 <option value="male">Macho</option>
