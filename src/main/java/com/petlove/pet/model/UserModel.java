@@ -1,36 +1,55 @@
 package com.petlove.pet.model;
-
-import org.apache.catalina.User;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserModel {
+    String id;
     private String username;
     private String password;
     private int age;
+    private String update;
+    private String create;
     private List<PetModel> pets = new ArrayList<>();
 
     public UserModel() {
         pets = new ArrayList<>();
     }
 
-    public UserModel(UserModel user) {
-    }
-
-    public UserModel(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
     @Override
     public String toString() {
         return "UserModel{" +
-                "username='" + username + '\'' +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", age=" + age +
+                ", update='" + update + '\'' +
+                ", create='" + create + '\'' +
                 ", pets=" + pets +
                 '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUpdate() {
+        return update;
+    }
+
+    public void setUpdate(String update) {
+        this.update = update;
+    }
+
+    public String getCreate() {
+        return create;
+    }
+
+    public void setCreate(String create) {
+        this.create = create;
     }
 
     public String getUsername() {

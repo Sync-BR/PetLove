@@ -1,12 +1,9 @@
 package com.petlove.pet.model;
-
-import com.petlove.pet.exception.dateException;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PetModel {
+    private String animal;
     private String name;
     private int age;
     private String gender;
@@ -14,27 +11,78 @@ public class PetModel {
     private String creationDate;
     private NeedModel needs;
     private boolean death;
+    private String create;
+    private String update;
 
     public PetModel() {
         needs = new NeedModel();
-
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        this.creationDate = formatter.format(date);
     }
 
     public PetModel(PetModel pet) {
     }
 
+    public PetModel(String name) {
+        this.name = name;
+    }
+
+    public PetModel(String animal, String name, int age, String gender, int life, String creationDate, NeedModel needs, boolean death, String create, String update) {
+        this.animal = animal;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.life = life;
+        this.creationDate = creationDate;
+        this.needs = needs;
+        this.death = death;
+        this.create = create;
+        this.update = update;
+    }
 
     @Override
     public String toString() {
         return "PetModel{" +
-                "name='" + name + '\'' +
+                "animal='" + animal + '\'' +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", life=" + life +
                 ", creationDate='" + creationDate + '\'' +
                 ", needs=" + needs +
                 ", death=" + death +
+                ", create='" + create + '\'' +
+                ", update='" + update + '\'' +
                 '}';
+    }
+
+    public String getCreate() {
+        return create;
+    }
+
+    public void setCreate(String create) {
+        this.create = create;
+    }
+
+    public String getUpdate() {
+        return update;
+    }
+
+    public void setUpdate(String update) {
+        this.update = update;
+    }
+
+    public String getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(String animal) {
+        this.animal = animal;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getName() {
@@ -70,9 +118,7 @@ public class PetModel {
     }
 
     public String getCreationDate() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        this.creationDate = formatter.format(date);
+
         return creationDate;
     }
 

@@ -10,11 +10,6 @@ public class NeedModel {
        faecs =  0;
     }
 
-    public NeedModel(int urine, int faecs) {
-        this.urine = urine;
-        this.faecs = faecs;
-    }
-
     @Override
     public String toString() {
         return "NeedModel{" +
