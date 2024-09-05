@@ -1,4 +1,6 @@
+import React from 'react'; 
 import { useState } from "react"
+
 
 interface CadastroFormProps {
     onNext: (data: { username: string; age: number; password: string }) => void

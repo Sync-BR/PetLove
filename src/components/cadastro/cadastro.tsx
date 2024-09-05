@@ -1,7 +1,9 @@
+import React from 'react'; 
 import { useState } from "react";
-import UserForm from "../user_form/cadastro";
+import UserForm from "../user_form/user_form";
 import PetForm from "../pet_form/petForm";
 import axios from "axios";
+
 
 const Cadastro: React.FC = () => {
     const [step, setStep] = useState(1);
@@ -13,7 +15,10 @@ const Cadastro: React.FC = () => {
         setStep(2)
     }
 
-    const handleSubmit = (data: { animal: string; name: string; gender: string }) => {
+    const handleSubmit = (data: { animal: string; name: string; gender: string, life: number, needs: { urine: number, faecs: number },
+        death: boolean,
+        create: string,
+        update: string  }) => {
         setPetData(data);
         console.log("Pet Dados", petData);
         
@@ -25,16 +30,15 @@ const Cadastro: React.FC = () => {
             
         };
 
-        axios.post('http://localhost:5000/users', allData)
+        // axios.post('http://localhost:5000/users', allData)
+        axios.post('http://186.247.89.58:8080/api/user/adduser', allData)
         .then((response) => {
           console.log('Dados enviados com sucesso:', response.data);
         })
         .catch((error) => {
           console.error('Erro ao enviar os dados:', error);
         });
-
     }
-
     return (
         <div>
             {step === 1 && <UserForm onNext={handleNext} />}

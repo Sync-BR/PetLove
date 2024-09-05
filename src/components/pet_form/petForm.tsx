@@ -1,21 +1,28 @@
+import React from 'react';
 import { useState } from "react";
+import IPetFormProps from '../../interfaces/animal.ts'
 
-interface PetFormProps {
-    onSubmit: (data: { animal: string; name: string; gender: string }) => void;
-}
 
-const PetForm: React.FC<PetFormProps> = ({ onSubmit }) => {
+const PetForm: React.FC<IPetFormProps> = ({ onSubmit }) => {
     const [animal, setAnimal] = useState("");
     const [name, setName] = useState("");
     const [gender, setGender] = useState("");
+    const [create, setCreate] = useState("");
+
 
     const handleSubmit = (e: React.FormEvent) => {
-
         e.preventDefault();
-        onSubmit({ animal: animal, name: name, gender: gender });
+        // const currentDate = new Date().toISOString();
+        const currentDateLocal = new Date().toLocaleString('sv-SE')
+        setCreate(currentDateLocal)
+        onSubmit({
+            animal: animal, name: name, gender: gender, life: 100, needs: { urine: 50, faecs: 50 },
+            death: false,
+            create: String(currentDateLocal),
+            update: ""
+        });
 
     }
-
 
     return (
         <form onSubmit={handleSubmit}>
