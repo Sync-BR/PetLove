@@ -1,3 +1,11 @@
+# Projeto Pet Virtual
+
+## Inicializar o projeto:
+  * 1 clone o repositório
+  * 2 instalar as dependências com `npm install`
+  * 3 iniciar o servidor com `npm run dev`
+  * 4 iniciar o servidor back_end json `npm run backend`
+
 
 # PetLove Spring Boot
 
