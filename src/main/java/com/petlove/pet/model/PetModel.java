@@ -1,8 +1,11 @@
 package com.petlove.pet.model;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+@JsonInclude(JsonInclude.Include.NON_NULL)
 
-public class PetModel {
+public class PetModel  {
     private String animal;
     private String name;
     private int age;
@@ -28,17 +31,14 @@ public class PetModel {
         this.name = name;
     }
 
-    public PetModel(String animal, String name, int age, String gender, int life, String creationDate, NeedModel needs, boolean death, String create, String update) {
+    public PetModel(String animal, String name, int age, String gender, int life, NeedModel needs, boolean death) {
         this.animal = animal;
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.life = life;
-        this.creationDate = creationDate;
         this.needs = needs;
         this.death = death;
-        this.create = create;
-        this.update = update;
     }
 
     @Override
