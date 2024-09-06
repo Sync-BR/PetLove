@@ -1,6 +1,12 @@
 package com.petlove.pet.model;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.ArrayList;
 import java.util.List;
+
+
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 
 public class UserModel {
     String id;
@@ -13,6 +19,14 @@ public class UserModel {
 
     public UserModel() {
         pets = new ArrayList<>();
+    }
+
+    public UserModel(String id, String username, String password, int age, List<PetModel> pets) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.age = age;
+        this.pets = pets;
     }
 
     @Override

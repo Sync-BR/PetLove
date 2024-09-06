@@ -1,5 +1,6 @@
 package com.petlove.pet.controller;
 
+import com.petlove.pet.model.NeedModel;
 import com.petlove.pet.model.PetModel;
 import com.petlove.pet.model.UserList;
 import com.petlove.pet.model.UserModel;
@@ -16,42 +17,67 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserController {
     private static UserList userList = new UserList();
-    private static int getPosition(String username){
+
+    private static int getPosition(String username) {
         int size = 0;
-        for(UserModel users: userList.usuarios ){
+        for (UserModel users : userList.usuarios) {
             size++;
-            if(users.getUsername().equals(username)){
+            if (users.getUsername().equals(username)) {
                 size--;
             }
         }
         return size;
     }
 
-    @PostMapping("/addpet{username}")
-    public ResponseEntity<HttpStatus> addPetUser(@RequestBody UserModel user) {
-        int size = getPosition(user.getUsername());
-        List<PetModel> pets = new ArrayList<>();
-        PetModel pet = new PetModel();
-        pets.add(new PetModel(pet));
+    @PostMapping("/addpet/{username}")
+    public ResponseEntity<HttpStatus> addPetUser(@PathVariable String username, @RequestBody PetModel pet) {
+        UserModel user = null;
+        for (UserModel users : userList.getUsuarios()) {
+            if (users.getUsername().equals(username)) {
+                user = users;
+                break;
+            }
+        }
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        // Adiciona o novo pet à lista de pets do usuário
+        List<PetModel> pets = user.getPets();
+        if (pets == null) {
+            pets = new ArrayList<>();
+        }
+        pets.add(pet);
         user.setPets(pets);
-        userList.usuarios.set(0, user.getPets().getLast());
+
+        // Atualiza o usuário na lista
+        boolean updated = userList.updateUser(user);
+        if (!updated) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ResponseEntity<HttpStatus> updateUser(@RequestBody UserModel user) {
-        int size = 0;
-        for (UserModel updateUser : userList.usuarios) {
-            size++;
-            if (updateUser.getUsername().equals(user.getUsername())) {
-                size--;
-                System.out.println("Posição do array " + size);
-                userList.usuarios.add(size, user);
-                return new ResponseEntity<>(HttpStatus.OK);
-            }
-        }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-    }
+
+//    @PostMapping("/addpet{username}")
+//    public ResponseEntity<HttpStatus> addPetUser(@PathVariable String username, @RequestBody PetModel pet) {
+//        UserModel user = null;
+//        List<PetModel> pets = new ArrayList<>();
+//        pets.add(pet);
+//        for(UserModel users : userList.getUsuarios()) {
+//            if(users.getUsername().equals(username)) {
+//                user = users;
+//                break;
+//            }
+//        }
+//        user.setPets(pets);
+//      //  userList.usuarios.set(0, user);
+//        userList.usuarios.add(pet);
+//     //   userList.usuarios.add(user.);
+//
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
 
     @CrossOrigin(origins = "http://localhost:5173")
@@ -97,5 +123,49 @@ public class UserController {
         return userList.usuarios;
     }
 
+    public static void main(String[] args) {
+        //Usuario 1
+        try {
+            NeedModel needModel = new NeedModel(0, 0);
+            PetModel pet = new PetModel("Gato", "Francisco", 1, "Masculino", 100, needModel, false);
+            List<PetModel> pets = new ArrayList<>();
+            pets.add(pet);
+            UserModel user = new UserModel("1", "Sync", "1212", 24, pets);
+            userList.usuarios.add(user);
+            System.out.println(user);
+            System.out.println(pets);
+            System.out.println(userList.usuarios);
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        //Usuario 2
+        try {
+            NeedModel needModel = new NeedModel(0, 0);
+            PetModel pet = new PetModel("Gato", "Francisco", 1, "Masculino", 100, needModel, false);
+            List<PetModel> pets = new ArrayList<>();
+            pets.add(new PetModel(pet));
+            List<UserList> users = new ArrayList<>();
+
+            UserModel user = new UserModel("1", "teste", "1212", 24, pets);
+            users.add(new UserList(users));
+            userList.usuarios.add(user);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+        UserModel newUsers = new UserModel();
+        for (UserModel users : userList.getUsuarios()) {
+            if (users.getUsername().equals("Sync")) {
+                newUsers = users;
+                System.out.println("Encontrei");
+            }
+        }
+
+        System.out.println(userList.usuarios.set(1, newUsers));
+        System.out.println(userList.usuarios);
+
+
+    }
 
 }
