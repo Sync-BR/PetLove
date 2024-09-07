@@ -1,16 +1,22 @@
 package com.petlove.pet.controller;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
 import com.petlove.pet.model.NeedModel;
 import com.petlove.pet.model.PetModel;
 import com.petlove.pet.model.UserList;
 import com.petlove.pet.model.UserModel;
 import org.apache.catalina.User;
+<<<<<<< HEAD
 =======
 import com.petlove.pet.model.UserList;
 import com.petlove.pet.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 >>>>>>> main
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +26,9 @@ import java.util.List;
 
 @RestController
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
 
 @RequestMapping("/api/user")
 public class UserController {
@@ -102,6 +111,7 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
+<<<<<<< HEAD
 =======
 @RequestMapping("/api/user")
 public class UserController {
@@ -129,6 +139,8 @@ public class UserController {
         return null;
     }
 >>>>>>> main
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
     @PostMapping("/adduser")
     public ResponseEntity<HttpStatus> addUser(@RequestBody UserModel user) {
         System.out.println(user);
@@ -141,6 +153,9 @@ public class UserController {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
     @PostMapping("/deletepet")
     public ResponseEntity<HttpStatus> deletePet(@RequestBody String petName) {
         PetModel petModel = new PetModel(petName);
@@ -202,6 +217,7 @@ public class UserController {
 
 
     }
+<<<<<<< HEAD
 =======
     @GetMapping("/users")
     public List<UserModel> listaUsuarios(){
@@ -210,5 +226,7 @@ public class UserController {
 
 
 >>>>>>> main
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
 
 }

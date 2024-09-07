@@ -12,7 +12,10 @@ public class UserModel {
     String id;
     private String username;
     private String password;
+<<<<<<< HEAD
     private String email;
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
     private int age;
     private String update;
     private String create;
@@ -36,7 +39,10 @@ public class UserModel {
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+<<<<<<< HEAD
                 ", email='" + email + '\'' +
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
                 ", age=" + age +
                 ", update='" + update + '\'' +
                 ", create='" + create + '\'' +
@@ -99,10 +105,13 @@ public class UserModel {
     public void setPets(List<PetModel> pets) {
         this.pets = pets;
     }
+<<<<<<< HEAD
     public String getEmail() {
         return email;
     }
     public void setEmail(String email) {
         this.email = email;
     }
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
 }
