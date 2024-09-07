@@ -2,6 +2,7 @@ package com.petlove.pet.controller;
 
 import com.petlove.pet.model.UserList;
 import com.petlove.pet.model.UserModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-    private static UserList userList = new UserList();
+    @Autowired(required = false)
+    private  UserList userList = new UserList();
 
     public boolean verifyUser(UserModel user) {
         return false;

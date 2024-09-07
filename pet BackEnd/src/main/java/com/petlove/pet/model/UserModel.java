@@ -8,6 +8,7 @@ import java.util.List;
 public class UserModel {
     private String username;
     private String password;
+    private String email;
     private int age;
     private List<PetModel> pets = new ArrayList<>();
 
@@ -23,6 +24,7 @@ public class UserModel {
         return "UserModel{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 ", age=" + age +
                 ", pets=" + pets +
                 '}';
@@ -58,5 +60,11 @@ public class UserModel {
 
     public void setPets(List<PetModel> pets) {
         this.pets = pets;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
