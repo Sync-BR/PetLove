@@ -1,11 +1,15 @@
 package com.petlove.pet.model;
 
+<<<<<<< HEAD
 import org.apache.catalina.User;
 
+=======
+>>>>>>> main
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserList {
+<<<<<<< HEAD
     public String id;
     public List<UserModel> usuarios =new ArrayList<>();
     public UserList(List<UserList> users) {
@@ -42,4 +46,10 @@ public class UserList {
 
     public void setUsuarios(int i, UserModel user) {
     }
+=======
+    public List<UserModel> usuarios = new ArrayList<>();
+    public UserList() {
+        usuarios = new ArrayList<>();
+    }
+>>>>>>> main
 }

@@ -12,6 +12,7 @@ public class UserModel {
     String id;
     private String username;
     private String password;
+    private String email;
     private int age;
     private String update;
     private String create;
@@ -35,6 +36,7 @@ public class UserModel {
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 ", age=" + age +
                 ", update='" + update + '\'' +
                 ", create='" + create + '\'' +
@@ -96,5 +98,11 @@ public class UserModel {
 
     public void setPets(List<PetModel> pets) {
         this.pets = pets;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

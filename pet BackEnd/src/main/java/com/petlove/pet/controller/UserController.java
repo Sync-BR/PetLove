@@ -1,10 +1,16 @@
 package com.petlove.pet.controller;
 
+<<<<<<< HEAD
 import com.petlove.pet.model.NeedModel;
 import com.petlove.pet.model.PetModel;
 import com.petlove.pet.model.UserList;
 import com.petlove.pet.model.UserModel;
 import org.apache.catalina.User;
+=======
+import com.petlove.pet.model.UserList;
+import com.petlove.pet.model.UserModel;
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> main
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+<<<<<<< HEAD
 
 @RequestMapping("/api/user")
 public class UserController {
@@ -95,6 +102,33 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
+=======
+@RequestMapping("/api/user")
+public class UserController {
+    @Autowired(required = false)
+    private  UserList userList = new UserList();
+
+    public boolean verifyUser(UserModel user) {
+        return false;
+    }
+    @PostMapping("/loginUser{username}Pass{password}")
+    public ResponseEntity<HttpStatus> login(@PathVariable String username, String password) {
+        int sizeList = 0;
+        for(UserModel usuarios: userList.usuarios){
+            sizeList++;
+            if(usuarios.getUsername().equals(username) && usuarios.getPassword().equals(password)){
+                sizeList--;
+                System.out.println("Posição do usuario: " +sizeList);
+                return new ResponseEntity<>(HttpStatus.OK);
+
+            } else {
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
+
+        }
+        return null;
+    }
+>>>>>>> main
     @PostMapping("/adduser")
     public ResponseEntity<HttpStatus> addUser(@RequestBody UserModel user) {
         System.out.println(user);
@@ -106,6 +140,7 @@ public class UserController {
         }
     }
 
+<<<<<<< HEAD
     @PostMapping("/deletepet")
     public ResponseEntity<HttpStatus> deletePet(@RequestBody String petName) {
         PetModel petModel = new PetModel(petName);
@@ -167,5 +202,13 @@ public class UserController {
 
 
     }
+=======
+    @GetMapping("/users")
+    public List<UserModel> listaUsuarios(){
+        return userList.usuarios;
+    }
+
+
+>>>>>>> main
 
 }
