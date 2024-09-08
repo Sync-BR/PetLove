@@ -1,13 +1,19 @@
 package com.petlove.pet.controller;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> a554fefe117173e534be71909d416efe623ab70b
+>>>>>>> main
 import com.petlove.pet.model.NeedModel;
 import com.petlove.pet.model.PetModel;
 import com.petlove.pet.model.UserList;
 import com.petlove.pet.model.UserModel;
+<<<<<<< HEAD
+import org.springframework.beans.factory.annotation.Autowired;
+=======
 import org.apache.catalina.User;
 <<<<<<< HEAD
 =======
@@ -17,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 >>>>>>> main
 =======
 >>>>>>> a554fefe117173e534be71909d416efe623ab70b
+>>>>>>> main
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +33,16 @@ import java.util.List;
 
 @RestController
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> a554fefe117173e534be71909d416efe623ab70b
+>>>>>>> main
 
 @RequestMapping("/api/user")
 public class UserController {
+    @Autowired
     private static UserList userList = new UserList();
 
     private static int getPosition(String username) {
@@ -110,6 +121,8 @@ public class UserController {
         return new ResponseEntity<>(currentUser, HttpStatus.UNAUTHORIZED);
     }
 
+<<<<<<< HEAD
+=======
     @CrossOrigin(origins = "http://localhost:5173")
 <<<<<<< HEAD
 =======
@@ -228,5 +241,6 @@ public class UserController {
 >>>>>>> main
 =======
 >>>>>>> a554fefe117173e534be71909d416efe623ab70b
+>>>>>>> main
 
 }
