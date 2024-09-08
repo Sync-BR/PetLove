@@ -1,33 +1,79 @@
-# Projeto Pet Virtual
 
-## Inicializar o projeto:
-  * 1 clone o repositório
-  * 2 instalar as dependências com `npm install`
-  * 3 iniciar o servidor com `npm run dev`
-  * 4 iniciar o servidor back_end json `npm run backend`
+## Exemplo de Autenticação de Usuário na API
+Para autenticar um usuário, você deve acessar o seguinte endpoint da API:
+
+    http://localhost:8080/api/user/loginUser{Usuario}Pass{Password}
+
+No link acima, substitua {Usuario} e {Password} pelos dados reais do usuário que deseja autenticar. Por exemplo, se o usuário for SYNC e a senha for 1212, o link final ficaria assim:
+
+Link final da api: 
+
+    http://localhost:8080/api/user/loginUserSYNCPass1212
+### Comportamento da API
+Se as credenciais estiverem corretas:
+
+* A API retornará os dados do usuário e o status 200 OK.
+
+        {
+            "username": "Eduardo",
+            "password": "1415",
+            "age": 1,
+            "pets": []
+        }
+
+* Se as credenciais forem inválidas:
+    * A API retornará o status 401 UNAUTHORIZED.
 
 
-# PetLove Spring Boot
+## Exemplo de JSON para Cadastro:
+Link para Cadastro:
+<a href="http://localhost:8080/api/user/adduser">http://localhost:8080/api/user/adduser</a>
 
-## Requisitos
-[Mavem](https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip)
+    
 
-[JDK 22](https://download.oracle.com/java/22/latest/jdk-22_windows-x64_bin.exe)
+        {
+            "username": "Nome",
+            "password": "Senha",
+            "age": 11,
+            "pets": []
+        }
+            
+    
+### Retorno Após Adicionar um Novo Usuário
+Após adicionar um novo usuário, os dados retornados incluirão informações sobre o usuário e seus pets, caso existam. Se o usuário tiver um pet, as informações detalhadas desse pet serão incluídas na resposta.
 
-[IntelliJ IDEA (Recomendado)](https://www.jetbrains.com/pt-br/idea/)
+Link para Retorno:
+<a href="http://localhost:8080/api/user/users">http://localhost:8080/api/user/users</a>
 
+### Exemplo de Retorno de um Usuário Sem Pet:
+    [
+        {
+            "username": "Nome",
+            "password": "Senha",
+            "age": 11,
+            "pets": []
+        }
+    ]
+### Exemplo de Retorno de um Usuário com Pet:
+    [
+        {
+            "username": "SYNC",
+            "password": "123",
+            "age": 1,
+            "pets": [
+                {
+                    "name": "Francisco",
+                    "age": 11,
+                    "gender": "Male",
+                    "life": 100,
+                    "creationDate": "31/08/2024",
+                    "needs": {
+                        "urine": 50,
+                        "faecs": 50
+                    },
+                    "death": false
+                }
+            ]
+        }
+    ]
 
-## Como usar API
-* Navegue até a branch BackEnd no repositório.
-* Consulte o arquivo Readme.md para mais detalhes sobre o projeto e as instruções específicas.
-
-[Readme.md](https://github.com/Sync-BR/PetLove/blob/BackEnd/Readme.md)
-
-### Como rodar API
-* Navegue até a branch BackEnd no repositório e faça o download.
-* Certifique-se de que todos os softwares listados nos requisitos estejam instalados.
-* Abra a sua IDE de preferência (IntelliJ IDEA recomendado).
-* Importe o projeto para a IDE escolhida.
-* Baixe as dependências do projeto.
-* Localize o arquivo PetApplication.java dentro do projeto.
-* Execute o método main da classe PetApplication para iniciar a API.
