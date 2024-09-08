@@ -1,12 +1,32 @@
 package com.petlove.pet.model;
 
+<<<<<<< HEAD
 import org.apache.catalina.User;
 
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+import org.apache.catalina.User;
+
+=======
+>>>>>>> main
+=======
+import org.apache.catalina.User;
+
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
+>>>>>>> main
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserList {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
+>>>>>>> main
     public String id;
     public List<UserModel> usuarios = new ArrayList<>();
 
@@ -47,7 +67,19 @@ public class UserList {
 
     public void setUsuarios(int i, UserModel user) {
     }
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+=======
+    public List<UserModel> usuarios = new ArrayList<>();
+    public UserList() {
+        usuarios = new ArrayList<>();
+    }
+>>>>>>> main
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
+>>>>>>> main
 }
 
