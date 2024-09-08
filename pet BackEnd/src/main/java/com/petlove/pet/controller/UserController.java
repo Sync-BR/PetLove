@@ -1,29 +1,7 @@
 package com.petlove.pet.controller;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a554fefe117173e534be71909d416efe623ab70b
->>>>>>> main
-import com.petlove.pet.model.NeedModel;
-import com.petlove.pet.model.PetModel;
-import com.petlove.pet.model.UserList;
-import com.petlove.pet.model.UserModel;
-<<<<<<< HEAD
+import com.petlove.pet.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-=======
-import org.apache.catalina.User;
-<<<<<<< HEAD
-=======
-import com.petlove.pet.model.UserList;
-import com.petlove.pet.model.UserModel;
-import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> main
-=======
->>>>>>> a554fefe117173e534be71909d416efe623ab70b
->>>>>>> main
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,19 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a554fefe117173e534be71909d416efe623ab70b
->>>>>>> main
 
 @RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private static UserList userList = new UserList();
-
+    public List<String> getMail(){
+        List<String> mails = new ArrayList<>();
+        for(UserModel user : userList.getUsuarios()){
+            mails.add(new String(user.getEmail()));
+        }
+        return mails;
+    }
     private static int getPosition(String username) {
         int size = 0;
         for (UserModel users : userList.usuarios) {
@@ -56,6 +33,16 @@ public class UserController {
         return size;
     }
 
+    @PostMapping("/adduser")
+    public ResponseEntity<HttpStatus> addUser(@RequestBody UserModel user) {
+        System.out.println(user);
+        boolean state = userList.usuarios.add(user);
+        if (state) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
     @PostMapping("/addpet/{username}")
     public ResponseEntity<HttpStatus> addPetUser(@PathVariable String username, @RequestBody PetModel pet) {
         UserModel user = null;
@@ -121,126 +108,5 @@ public class UserController {
         return new ResponseEntity<>(currentUser, HttpStatus.UNAUTHORIZED);
     }
 
-<<<<<<< HEAD
-=======
-    @CrossOrigin(origins = "http://localhost:5173")
-<<<<<<< HEAD
-=======
-@RequestMapping("/api/user")
-public class UserController {
-    @Autowired(required = false)
-    private  UserList userList = new UserList();
-
-    public boolean verifyUser(UserModel user) {
-        return false;
-    }
-    @PostMapping("/loginUser{username}Pass{password}")
-    public ResponseEntity<HttpStatus> login(@PathVariable String username, String password) {
-        int sizeList = 0;
-        for(UserModel usuarios: userList.usuarios){
-            sizeList++;
-            if(usuarios.getUsername().equals(username) && usuarios.getPassword().equals(password)){
-                sizeList--;
-                System.out.println("Posição do usuario: " +sizeList);
-                return new ResponseEntity<>(HttpStatus.OK);
-
-            } else {
-                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-            }
-
-        }
-        return null;
-    }
->>>>>>> main
-=======
->>>>>>> a554fefe117173e534be71909d416efe623ab70b
-    @PostMapping("/adduser")
-    public ResponseEntity<HttpStatus> addUser(@RequestBody UserModel user) {
-        System.out.println(user);
-        boolean state = userList.usuarios.add(user);
-        if (state) {
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
-    }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a554fefe117173e534be71909d416efe623ab70b
-    @PostMapping("/deletepet")
-    public ResponseEntity<HttpStatus> deletePet(@RequestBody String petName) {
-        PetModel petModel = new PetModel(petName);
-        for (UserModel user : userList.usuarios) {
-            if (user.getPets().equals(petModel.getName())) {
-                System.out.println("Encontrei");
-                break;
-            }
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @GetMapping("/users")
-    public List<UserModel> listaUsuarios() {
-        return userList.usuarios;
-    }
-
-    public static void main(String[] args) {
-        //Usuario 1
-        try {
-            NeedModel needModel = new NeedModel(0, 0);
-            PetModel pet = new PetModel("Gato", "Francisco", 1, "Masculino", 100, needModel, false);
-            List<PetModel> pets = new ArrayList<>();
-            pets.add(pet);
-            UserModel user = new UserModel("1", "Sync", "1212", 24, pets);
-            userList.usuarios.add(user);
-            System.out.println(user);
-            System.out.println(pets);
-            System.out.println(userList.usuarios);
-
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        //Usuario 2
-        try {
-            NeedModel needModel = new NeedModel(0, 0);
-            PetModel pet = new PetModel("Gato", "Francisco", 1, "Masculino", 100, needModel, false);
-            List<PetModel> pets = new ArrayList<>();
-            pets.add(new PetModel(pet));
-            List<UserList> users = new ArrayList<>();
-
-            UserModel user = new UserModel("1", "teste", "1212", 24, pets);
-            users.add(new UserList(users));
-            userList.usuarios.add(user);
-        } catch (Exception e) {
-            e.getMessage();
-        }
-
-        UserModel newUsers = new UserModel();
-        for (UserModel users : userList.getUsuarios()) {
-            if (users.getUsername().equals("Sync")) {
-                newUsers = users;
-                System.out.println("Encontrei");
-            }
-        }
-
-        System.out.println(userList.usuarios.set(1, newUsers));
-        System.out.println(userList.usuarios);
-
-
-    }
-<<<<<<< HEAD
-=======
-    @GetMapping("/users")
-    public List<UserModel> listaUsuarios(){
-        return userList.usuarios;
-    }
-
-
->>>>>>> main
-=======
->>>>>>> a554fefe117173e534be71909d416efe623ab70b
->>>>>>> main
 
 }
