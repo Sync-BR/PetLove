@@ -1,9 +1,6 @@
 package com.petlove.pet.controller;
 
-import com.petlove.pet.model.NeedModel;
-import com.petlove.pet.model.PetModel;
-import com.petlove.pet.model.UserList;
-import com.petlove.pet.model.UserModel;
+import com.petlove.pet.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +15,13 @@ import java.util.List;
 public class UserController {
     @Autowired
     private static UserList userList = new UserList();
-
+    public List<String> getMail(){
+        List<String> mails = new ArrayList<>();
+        for(UserModel user : userList.getUsuarios()){
+            mails.add(new String(user.getEmail()));
+        }
+        return mails;
+    }
     private static int getPosition(String username) {
         int size = 0;
         for (UserModel users : userList.usuarios) {
@@ -30,6 +33,16 @@ public class UserController {
         return size;
     }
 
+    @PostMapping("/adduser")
+    public ResponseEntity<HttpStatus> addUser(@RequestBody UserModel user) {
+        System.out.println(user);
+        boolean state = userList.usuarios.add(user);
+        if (state) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
     @PostMapping("/addpet/{username}")
     public ResponseEntity<HttpStatus> addPetUser(@PathVariable String username, @RequestBody PetModel pet) {
         UserModel user = null;
