@@ -10,7 +10,10 @@ import java.util.List;
 public class UserModel {
     private String username;
     private String password;
+<<<<<<< HEAD
     private String email;
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
     private int age;
     private List<PetModel> pets = new ArrayList<>();
 
@@ -23,7 +26,10 @@ public class UserModel {
         return "UserModel{" +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+<<<<<<< HEAD
                 ", email='" + email + '\'' +
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
                 ", age=" + age +
                 ", pets=" + pets +
                 '}';
@@ -62,10 +68,13 @@ public class UserModel {
     public void setPets(List<PetModel> pets) {
         this.pets = pets;
     }
+<<<<<<< HEAD
     public String getEmail() {
         return email;
     }
     public void setEmail(String email) {
         this.email = email;
     }
+=======
+>>>>>>> a554fefe117173e534be71909d416efe623ab70b
 }
