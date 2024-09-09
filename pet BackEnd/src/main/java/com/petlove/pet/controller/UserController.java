@@ -5,12 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-
 @RequestMapping("/api/user")
 public class UserController {
     @Autowired
@@ -22,15 +20,10 @@ public class UserController {
         }
         return mails;
     }
-    private static int getPosition(String username) {
-        int size = 0;
-        for (UserModel users : userList.usuarios) {
-            size++;
-            if (users.getUsername().equals(username)) {
-                size--;
-            }
-        }
-        return size;
+
+    @GetMapping("/users")
+    public static UserList getUserList() {
+        return userList;
     }
 
     @PostMapping("/adduser")

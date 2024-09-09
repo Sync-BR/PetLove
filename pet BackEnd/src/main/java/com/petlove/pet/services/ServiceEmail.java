@@ -25,7 +25,6 @@ public class ServiceEmail {
     public void sendAllMail(List<String> list) {
 
         for(String mail : list) {
-            System.out.println("Enviado para: "+mail);
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(mail);
             message.setSubject("Evento Especial no Jogo dos Pets: Cuide do Seu Animalzinho!");

@@ -1,6 +1,5 @@
 package com.petlove.pet.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -14,8 +13,6 @@ public class PetModel  {
     private String creationDate;
     private NeedModel needs;
     private boolean death;
-    private String create;
-    private String update;
 
     public PetModel() {
         needs = new NeedModel();
@@ -24,8 +21,6 @@ public class PetModel  {
         this.creationDate = formatter.format(date);
     }
 
-    public PetModel(PetModel pet) {
-    }
 
     public PetModel(String name) {
         this.name = name;
@@ -51,26 +46,8 @@ public class PetModel  {
                 ", life=" + life +
                 ", creationDate='" + creationDate + '\'' +
                 ", needs=" + needs +
-                ", death=" + death +
-                ", create='" + create + '\'' +
-                ", update='" + update + '\'' +
+                ", death=" + death+
                 '}';
-    }
-
-    public String getCreate() {
-        return create;
-    }
-
-    public void setCreate(String create) {
-        this.create = create;
-    }
-
-    public String getUpdate() {
-        return update;
-    }
-
-    public void setUpdate(String update) {
-        this.update = update;
     }
 
     public String getAnimal() {

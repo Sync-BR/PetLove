@@ -1,18 +1,9 @@
 package com.petlove.pet.model;
-
-import org.apache.catalina.User;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserList {
-    public String id;
     public List<UserModel> usuarios = new ArrayList<>();
-
-    public UserList(List<UserList> users) {
-    }
-
 
     public UserList() {
         usuarios = new ArrayList<>();
@@ -23,10 +14,10 @@ public class UserList {
             UserModel user = usuarios.get(i);
             if (user.getUsername().equals(updatedUser.getUsername())) {
                 usuarios.set(0, user);
-                return true; // Retorna true se a atualização for bem-sucedida
+                return true;
             }
         }
-        return false; // Retorna false se o usuário não for encontrado
+        return false;
     }
 
     public List<UserModel> getUsuarios() {
@@ -37,16 +28,7 @@ public class UserList {
         this.usuarios = usuarios;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setUsuarios(int i, UserModel user) {
-    }
 
 
 }
