@@ -67,17 +67,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a554fefe117173e534be71909d416efe623ab70b
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-    </dependencies>
-<<<<<<< HEAD
-=======
+
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-mail</artifactId>
@@ -89,10 +79,7 @@
 	</dependency>
 
 	</dependencies>
->>>>>>> main
 
-=======
->>>>>>> a554fefe117173e534be71909d416efe623ab70b
 
 	<build>
 		<plugins>

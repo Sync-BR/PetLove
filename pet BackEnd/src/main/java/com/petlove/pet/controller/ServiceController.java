@@ -1,7 +1,6 @@
 package com.petlove.pet.controller;
 
 import com.petlove.pet.model.MensagemRequest;
-import com.petlove.pet.model.UserList;
 import com.petlove.pet.services.ServiceEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
