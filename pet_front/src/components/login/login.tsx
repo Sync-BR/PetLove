@@ -1,8 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
     const [username, setUsername] = useState("");
@@ -14,47 +14,22 @@ const LoginForm = () => {
         e.preventDefault();
         console.log("user", username, "pass", password);
         try {
-           const response = await axios.post(`http://186.247.89.58:8080/api/user/loginUser${username}Pass${password}`)
+            const response = await axios.post(`http://186.247.89.58:8080/api/user/loginUser${username}Pass${password}`)
+            const userData = response.data
+            console.log("usersDados", userData);
+            localStorage.setItem("userData", JSON.stringify(userData));
+            toast.success('Usuário Conectado!')
+            navigate("/userProfile");
 
-           const userData = response.data
-           console.log("usersDados", userData);
-           localStorage.setItem("userData", JSON.stringify(userData));
-           navigate("/userProfile");
-           
-            
+
 
         } catch (error) {
             console.error("Erro ao verificar login", error)
             setError("Erro ao tentar fazer o login. Tente Novamente.");
+            toast.error('Erro ao tentar fazer o login.')
         }
     }
 
-    // const user = response.data.find(
-    //     (user: { username: string; password: string }) =>
-    //         user.username === username && user.password === password
-    // );
-
-    // if(user){
-    //     console.log("Login Bem-Sucedido",user);
-    //     toast.success('Login Bem-Sucedido!', {
-    //         draggable: true,
-    //         closeOnClick: true,
-    //     })
-    // }else {
-    //     // setError("Nome de usuário ou senha incorretos")
-    //     toast.error('Nome de usuário ou senha incorretos.', {
-    //         draggable: true,
-    //         closeOnClick: true,
-    //     })
-    //     console.log("deu b.o");
-
-    // }
-
-    // const loginRequest = {
-    //     username: username,
-    //     password: password
-    // }
-    // console.log("Dados do Usuário", loginRequest);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -76,6 +51,7 @@ const LoginForm = () => {
             />
 
             <button type="submit"> Entrar </button>
+            <Link to='/cadastro'> Cadastre-se aqui </Link>
         </form>
     )
 }

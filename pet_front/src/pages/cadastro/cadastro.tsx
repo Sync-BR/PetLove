@@ -1,8 +1,9 @@
 import React from 'react'; 
 import { useState } from "react";
-import UserForm from "../user_form/user_form";
-import PetForm from "../pet_form/petForm";
+import UserForm from "../../components/user_form/user_form";
+import PetForm from "../../components/pet_form/petForm";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Cadastro: React.FC = () => {
@@ -20,7 +21,7 @@ const Cadastro: React.FC = () => {
         create: string,
         update: string  }) => {
         setPetData(data);
-        console.log("Pet Dados", petData);
+        console.log("Pet Dados", data);
         
         const allData = {
             username: userData.username,
@@ -37,6 +38,7 @@ const Cadastro: React.FC = () => {
         })
         .catch((error) => {
           console.error('Erro ao enviar os dados:', error);
+          toast.error('Erro ao enviar os dados')
         });
     }
     return (
