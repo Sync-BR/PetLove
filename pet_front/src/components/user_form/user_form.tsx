@@ -3,11 +3,12 @@ import { useState } from "react"
 
 
 interface CadastroFormProps {
-    onNext: (data: { username: string; age: number; password: string }) => void
+    onNext: (data: { username: string; email: string; age: number; password: string }) => void
 }
 
 const UserForm: React.FC<CadastroFormProps> = ({ onNext }) => {
-    const [username, setUsername] = useState("");
+    const [username1, setUsername1] = useState("");
+    const [userEmail, setUserEmail] = useState("")
     const [age, setAge] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("")
@@ -18,19 +19,26 @@ const UserForm: React.FC<CadastroFormProps> = ({ onNext }) => {
             alert("Senhas não conferem");
             return;
         }
-        onNext({ username: username, age: Number(age), password: password })
+        onNext({ username: username1, email: userEmail, age: Number(age), password: password })
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <h1>Cadastro</h1>
             <input
-                type="text"
-                placeholder="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                type="email"
+                placeholder="email"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
                 required
             />
+             <input
+                type="text"
+                placeholder="username"
+                value={username1}
+                onChange={(e) => setUsername1(e.target.value)}
+                required
+            /> 
             <input
                 type="number"
                 placeholder="Idade"
